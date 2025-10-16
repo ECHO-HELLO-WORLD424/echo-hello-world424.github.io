@@ -1,0 +1,74 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: var(--md-sys-color-surface);
+    min-height: 100vh;
+    color: var(--md-sys-color-on-surface);
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: var(--md-sys-color-surface-container);
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: var(--md-sys-elevation-2);
+}
+
+h1 {
+    font: var(--md-sys-typescale-headline-large);
+    color: var(--md-sys-color-primary);
+    margin-bottom: 16px;
+    letter-spacing: 0;
+}
+
+main {
+    max-width: 1400px;
+    margin: 24px auto;
+    padding: 0 16px;
+    flex: 1;
+    width: 100%;
+}
+
+footer {
+    background: var(--md-sys-color-surface-container);
+    padding: 24px;
+    text-align: center;
+    box-shadow: var(--md-sys-elevation-2);
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 48px;
+    font: var(--md-sys-typescale-body-large);
+    color: var(--md-sys-color-on-surface);
+    background: var(--md-sys-color-surface-container-low);
+    border-radius: var(--md-sys-shape-corner-medium);
+}
+
+.error {
+    background: var(--md-sys-color-error-container);
+    color: var(--md-sys-color-on-error-container);
+}
+
+/* Responsive base adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font: var(--md-sys-typescale-headline-medium);
+    }
+
+    header {
+        padding: 16px;
+    }
+
+    main {
+        margin: 16px auto;
+        padding: 0 12px;
+    }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- CSS files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/welcome.css">
+</head>
+<body>
+    <div class="container">
+        <div class="fixed-viewport">
+            <div class="background-image"></div>
+            <div class="mask"></div>
+
+            <div class="welcome-text">
+                <h1>Welcome</h1>
+                <p>Scroll to explore</p>
+            </div>
+
+            <!-- Navigation Cards -->
+            <div class="cards-container nav-cards">
+                <!-- Personal Information - Expandable -->
+                <div class="card expandable-card" id="personal-info-card">
+                    <div class="icon">👤</div>
+                    <div class="card-content">
+                        <h3>Personal Information</h3>
+                        <p>Click to view contact details</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </div>
+
+                <!-- Sub-cards (hidden by default) -->
+                <div class="sub-cards-container" id="sub-cards">
+                    <a href="mailto:patrickechohelloworld@outlook.com" class="card sub-card">
+                        <div class="icon">📧</div>
+                        <div class="card-content">
+                            <h3>Email</h3>
+                            <p>patrickechohelloworld@outlook.com</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/ECHO-HELLO-WORLD424" target="_blank" class="card sub-card">
+                        <div class="icon">💻</div>
+                        <div class="card-content">
+                            <h3>GitHub</h3>
+                            <p>@ECHO-HELLO-WORLD424</p>
+                        </div>
+                    </a>
+                    <a href="https://openreview.net/profile?id=%7EZiyu_Patrick_Chen1" target="_blank" class="card sub-card">
+                        <div class="icon">📄</div>
+                        <div class="card-content">
+                            <h3>OpenReview</h3>
+                            <p>View my publications</p>
+                        </div>
+                    </a>
+                    <a href="https://discord.com/users/patrick_echo_hello_world" target="_blank" class="card sub-card">
+                        <div class="icon">💬</div>
+                        <div class="card-content">
+                            <h3>Discord</h3>
+                            <p>@patrick_echo_hello_world</p>
+                        </div>
+                    </a>
+                </div>
+
+                <a href="index.html" class="card">
+                    <div class="icon">🏠</div>
+                    <div class="card-content">
+                        <h3>This Page</h3>
+                        <p>Return to welcome</p>
+                    </div>
+                </a>
+                <a href="collections.html" class="card">
+                    <div class="icon">🖼️</div>
+                    <div class="card-content">
+                        <h3>Gallery</h3>
+                        <p>Explore photo collections</p>
+                    </div>
+                </a>
+                <a href="https://openreview.net/profile?id=%7EZiyu_Patrick_Chen1" target="_blank" class="card">
+                    <div class="icon">📚</div>
+                    <div class="card-content">
+                        <h3>Publications</h3>
+                        <p>Read my research papers</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="scroll-indicator">Scroll Down</div>
+        </div>
+    </div>
+
+    <script src="js/welcome.js"></script>
+</body>
+</html>

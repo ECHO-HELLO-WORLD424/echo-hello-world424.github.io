@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Collections</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Modular CSS files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/covers.css">
+</head>
+<body>
+    <header>
+        <div class="header-with-back">
+            <a href="index.html" class="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+            <div class="header-content">
+                <h1>Photo Gallery</h1>
+                <p class="header-subtitle">Explore our collections</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="loading" class="loading">Loading collections...</div>
+        <div id="error" class="error" style="display: none;"></div>
+
+        <!-- Collections Section -->
+        <section id="covers-section" class="covers-section" style="display: none;">
+            <div id="covers-grid" class="covers-grid"></div>
+        </section>
+    </main>
+
+    <!-- Modal for cover details -->
+    <div id="cover-modal" class="cover-modal">
+        <div class="cover-modal-content">
+            <span class="cover-modal-close">&times;</span>
+            <div class="cover-modal-layout">
+                <!-- Left side: Text content -->
+                <div class="cover-modal-text">
+                    <div class="cover-modal-tag-badge" id="modal-tag-badge"></div>
+                    <h2 id="modal-title"></h2>
+                    <p class="modal-abstract" id="modal-abstract"></p>
+                    <div class="modal-description" id="modal-description"></div>
+                    <button class="btn-open-collection" id="btn-open-collection">
+                        <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                        <span>Open Collection</span>
+                    </button>
+                </div>
+                <!-- Right side: Cover image -->
+                <div class="cover-modal-image">
+                    <img id="modal-cover-img" src="" alt="Cover">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
