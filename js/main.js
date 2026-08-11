@@ -90,7 +90,8 @@ function renderSite(cfg) {
   /* profile */
   setText('profile-name', cfg.profile.name);
   setText('profile-tagline', cfg.profile.tagline);
-  setText('profile-bio', cfg.profile.bio);
+  const bio = document.getElementById('profile-bio');
+  if (bio) bio.innerHTML = markdownToHtml(cfg.profile.bio);
   /* the marquee loops by translating -50%, so the text is duplicated */
   const chunk = '* ' + cfg.profile.marquee + ' ';
   setText('marquee-text', chunk + chunk);

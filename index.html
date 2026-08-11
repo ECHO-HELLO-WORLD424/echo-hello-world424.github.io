@@ -17,9 +17,9 @@
        paint so there is no flash of the wrong layout. -->
   <script>
     (function () {
-      var uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
-      var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-      var narrow = window.innerWidth < 720;
+      const uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+      const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+      const narrow = window.innerWidth < 720;
       document.documentElement.dataset.layout = (uaMobile || coarse || narrow) ? 'mobile' : 'pc';
     })();
   </script>
@@ -330,6 +330,7 @@
   </div>
 
   <script src="js/config.js" defer></script>
+  <script src="js/markdown.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

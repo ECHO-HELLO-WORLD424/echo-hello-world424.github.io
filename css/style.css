@@ -315,6 +315,28 @@ button:focus-visible {
   margin-bottom: 8px;
 }
 
+/* spacing for Markdown-rendered bio content */
+.bio p,
+.bio ul,
+.bio ol,
+.bio pre,
+.bio blockquote,
+.bio hr {
+  margin: 0 0 6px;
+}
+.bio ul,
+.bio ol {
+  padding-left: 24px;
+}
+.bio p:last-child,
+.bio ul:last-child,
+.bio ol:last-child,
+.bio pre:last-child,
+.bio blockquote:last-child,
+.bio hr:last-child {
+  margin-bottom: 0;
+}
+
 .marquee-box {
   background: #fff;
   padding: 3px 0;

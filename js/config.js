@@ -7,7 +7,9 @@
    Quick guide:
      - siteTitle ......... browser tab, window title bar, taskbar button
      - osName/osVersion .. Start menu sidebar branding
-     - profile ........... name / tagline / bio / scrolling marquee text
+      - profile ........... name / tagline / bio / scrolling marquee text;
+                           bio is Markdown (paragraphs, **bold**, lists,
+                           headings, links, `code`; two trailing spaces = <br>)
      - images ............ paths (or URLs) of banner, profile, background
      - emails ............ contact list; the FIRST entry is also used by
                            Start -> "E-mail me"
@@ -29,12 +31,21 @@ window.SITE_CONFIG = {
     name: 'Patrick',
     tagline: 'Undergraduate Student - Researcher - AI Infra/Embodied Intelligence',
     bio:
-      "Hi there, and welcome to my homepage! I'm Patrick" +
-      'Currently undergraduate at The Grainger College of Engineering | UIUC' +
-      'Field of interests: AI Infra | Embodied Intelligence',
+      "Hi there, and welcome to my homepage! I'm **Patrick**  \n" +
+      'Currently undergraduate at The Grainger College of Engineering | UIUC\n' +
+      '\n' +
+      '**Field of interests:**\n' +
+      '- AI Infra\n' +
+      '- Embodied Intelligence\n' +
+      '\n' +
+      '**Skills:**\n' +
+      '- Experience w/ CUDA C++, PyTorch/JAX\n' +
+      '- ML pipeline optimization on multi-GPU clusters\n' +
+      '- Experience w/ Transformer, DiT, VLA, JEPA, World Models\n',
     marquee:
-      'Welcome to my corner of the World Wide Web!' +
-      '* Sign my guestbook! *',
+      'CUDA C++, PyTorch/JAX * ' +
+      'ML pipeline optimization on multi-GPU clusters * ' +
+      'Transformer, DiT, VLA, WFM '
   },
 
   images: {
@@ -43,7 +54,7 @@ window.SITE_CONFIG = {
       "Pixel-art banner: a retro sunset over mountains with the text " +
       "'Patrick's Homepage'",
     profile: 'assets/img/profile.png',
-    profileAlt: 'Pixel-art portrait of Patrick',
+    profileAlt: 'Patrick',
     background: 'assets/img/background.png',
   },
 
