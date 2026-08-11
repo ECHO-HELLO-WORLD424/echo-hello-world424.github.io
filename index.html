@@ -1,98 +1,335 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-layout="pc">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome - Gallery</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- CSS files -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/welcome.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patrick's Homepage</title>
+  <meta name="description" content="Patrick's personal homepage — vintage Windows style. Contact info and links: GitHub, Google Scholar, Discord, OpenReview.">
+  <link rel="icon" type="image/png" href="assets/img/profile.png">
+
+  <!-- ================================================================
+       EDIT ME: all personal details (name, e-mails, links, images,
+       dialog texts, ...) live in js/config.js — edit that file, save,
+       refresh. The text in this file is only a no-JavaScript fallback.
+       ================================================================ -->
+
+  <!-- Set the layout (pc = landscape / mobile = vertical) before first
+       paint so there is no flash of the wrong layout. -->
+  <script>
+    (function () {
+      var uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+      var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+      var narrow = window.innerWidth < 720;
+      document.documentElement.dataset.layout = (uaMobile || coarse || narrow) ? 'mobile' : 'pc';
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="fixed-viewport">
-            <div class="background-image"></div>
-            <div class="mask"></div>
 
-            <div class="welcome-text">
-                <h1>Welcome</h1>
-                <p>Scroll to explore</p>
-            </div>
+  <!-- ============ pixel icon sprite (16x16, crisp edges) ============ -->
+  <svg class="sprite" aria-hidden="true" width="0" height="0">
+    <defs>
+      <symbol id="i-home" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <g fill="#a52a2a">
+          <rect x="7" y="1" width="2" height="1"/><rect x="5" y="2" width="6" height="1"/>
+          <rect x="3" y="3" width="10" height="1"/><rect x="1" y="4" width="14" height="1"/>
+        </g>
+        <rect x="3" y="5" width="10" height="9" fill="#fff2c0"/>
+        <rect x="4" y="6" width="2" height="2" fill="#87ceeb"/>
+        <rect x="10" y="6" width="2" height="2" fill="#87ceeb"/>
+        <rect x="7" y="9" width="3" height="5" fill="#7a4a21"/>
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="1" y="3" width="14" height="10" fill="#0a0a0a"/>
+        <rect x="2" y="4" width="12" height="8" fill="#ffffff"/>
+        <path d="M2 4 L8 9 L14 4" stroke="#0a0a0a" stroke-width="1" fill="none"/>
+      </symbol>
+      <symbol id="i-github" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <g fill="#171515">
+          <rect x="4" y="1" width="3" height="2"/><rect x="9" y="1" width="3" height="2"/>
+          <rect x="3" y="3" width="10" height="2"/><rect x="2" y="5" width="12" height="6"/>
+          <rect x="5" y="11" width="6" height="2"/>
+        </g>
+        <rect x="5" y="6" width="2" height="2" fill="#ffffff"/>
+        <rect x="9" y="6" width="2" height="2" fill="#ffffff"/>
+      </symbol>
+      <symbol id="i-scholar" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="1" y="1" width="14" height="14" fill="#4285f4"/>
+        <g fill="#ffffff">
+          <rect x="7" y="3" width="2" height="1"/><rect x="4" y="4" width="8" height="1"/>
+          <rect x="2" y="5" width="12" height="2"/><rect x="5" y="7" width="6" height="3"/>
+          <rect x="6" y="10" width="4" height="1"/><rect x="12" y="6" width="1" height="4"/>
+        </g>
+      </symbol>
+      <symbol id="i-discord" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="1" y="1" width="14" height="14" fill="#5865f2"/>
+        <g fill="#ffffff">
+          <rect x="4" y="3" width="2" height="2"/><rect x="10" y="3" width="2" height="2"/>
+          <rect x="3" y="4" width="10" height="1"/><rect x="2" y="5" width="12" height="6"/>
+          <rect x="4" y="11" width="8" height="1"/>
+        </g>
+        <rect x="5" y="6" width="2" height="3" fill="#5865f2"/>
+        <rect x="9" y="6" width="2" height="3" fill="#5865f2"/>
+        <rect x="6" y="10" width="4" height="1" fill="#5865f2"/>
+      </symbol>
+      <symbol id="i-openreview" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="3" y="1" width="10" height="14" fill="#0a0a0a"/>
+        <rect x="4" y="2" width="8" height="12" fill="#ffffff"/>
+        <path d="M9 1 L13 5 L9 5 Z" fill="#c0c0c0"/>
+        <rect x="6" y="6" width="4" height="1" fill="#1a56db"/>
+        <rect x="6" y="8" width="4" height="1" fill="#1a56db"/>
+        <rect x="6" y="10" width="2" height="1" fill="#1a56db"/>
+        <g fill="#f59e0b"><rect x="11" y="9" width="1" height="3"/><rect x="10" y="10" width="3" height="1"/></g>
+      </symbol>
+      <symbol id="i-start" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="1" y="2" width="6" height="5" fill="#ff3b30"/>
+        <rect x="8" y="3" width="6" height="5" fill="#34c759"/>
+        <rect x="1" y="8" width="6" height="5" fill="#0a84ff"/>
+        <rect x="8" y="7" width="6" height="5" fill="#ffd60a"/>
+      </symbol>
+      <symbol id="i-computer" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="1" y="2" width="14" height="10" fill="#0a0a0a"/>
+        <rect x="2" y="3" width="12" height="8" fill="#c0c0c0"/>
+        <rect x="3" y="4" width="10" height="6" fill="#008080"/>
+        <rect x="6" y="12" width="4" height="2" fill="#808080"/>
+        <rect x="4" y="14" width="8" height="1" fill="#0a0a0a"/>
+      </symbol>
+      <symbol id="i-folder" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="1" y="3" width="6" height="2" fill="#ffd76b"/>
+        <rect x="1" y="5" width="14" height="8" fill="#ffd76b"/>
+        <rect x="1" y="5" width="14" height="1" fill="#c8a028"/>
+        <rect x="1" y="12" width="14" height="1" fill="#c8a028"/>
+      </symbol>
+      <symbol id="i-bin" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <rect x="3" y="2" width="10" height="1" fill="#0a0a0a"/>
+        <rect x="4" y="3" width="8" height="11" fill="#c0c0c0"/>
+        <rect x="4" y="3" width="8" height="1" fill="#808080"/>
+        <rect x="6" y="5" width="1" height="7" fill="#808080"/>
+        <rect x="9" y="5" width="1" height="7" fill="#808080"/>
+        <rect x="4" y="13" width="8" height="1" fill="#808080"/>
+      </symbol>
+      <symbol id="i-link" viewBox="0 0 16 16" shape-rendering="crispEdges">
+        <g fill="#0a0a0a">
+          <rect x="8" y="2" width="6" height="2"/><rect x="12" y="2" width="2" height="6"/>
+          <rect x="9" y="5" width="2" height="2"/><rect x="7" y="7" width="2" height="2"/>
+          <rect x="5" y="9" width="2" height="2"/><rect x="3" y="11" width="2" height="2"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
 
-            <!-- Navigation Cards -->
-            <div class="cards-container nav-cards">
-                <!-- Personal Information - Expandable -->
-                <div class="card expandable-card" id="personal-info-card">
-                    <div class="icon">👤</div>
-                    <div class="card-content">
-                        <h3>Personal Information</h3>
-                        <p>Click to view contact details</p>
-                    </div>
-                    <div class="expand-icon">▼</div>
-                </div>
+  <!-- ======================= desktop ======================= -->
+  <div class="desktop" id="desktop">
 
-                <!-- Sub-cards (hidden by default) -->
-                <div class="sub-cards-container" id="sub-cards">
-                    <a href="mailto:patrickechohelloworld@outlook.com" class="card sub-card">
-                        <div class="icon">📧</div>
-                        <div class="card-content">
-                            <h3>Email</h3>
-                            <p>patrickechohelloworld@outlook.com</p>
-                        </div>
-                    </a>
-                    <a href="https://github.com/ECHO-HELLO-WORLD424" target="_blank" class="card sub-card">
-                        <div class="icon">💻</div>
-                        <div class="card-content">
-                            <h3>GitHub</h3>
-                            <p>@ECHO-HELLO-WORLD424</p>
-                        </div>
-                    </a>
-                    <a href="https://openreview.net/profile?id=%7EZiyu_Patrick_Chen1" target="_blank" class="card sub-card">
-                        <div class="icon">📄</div>
-                        <div class="card-content">
-                            <h3>OpenReview</h3>
-                            <p>View my publications</p>
-                        </div>
-                    </a>
-                    <a href="https://discord.com/users/patrick_echo_hello_world" target="_blank" class="card sub-card">
-                        <div class="icon">💬</div>
-                        <div class="card-content">
-                            <h3>Discord</h3>
-                            <p>@patrick_echo_hello_world</p>
-                        </div>
-                    </a>
-                </div>
+    <!-- Desktop shortcuts (PC layout only).
+         EXPANSION: copy a <button class="desk-icon"> block to add a shortcut. -->
+    <aside class="desktop-icons" aria-label="Desktop shortcuts">
+      <button class="desk-icon" data-dialog-title="My Computer"
+              data-dialog-text="This PC is running PatrickOS 95. System is nominal.">
+        <svg class="desk-glyph"><use href="#i-computer"/></svg>
+        <span>My Computer</span>
+      </button>
+      <button class="desk-icon" data-dialog-title="My Documents"
+              data-dialog-text="Nothing here yet — this folder is reserved for future projects.">
+        <svg class="desk-glyph"><use href="#i-folder"/></svg>
+        <span>My Documents</span>
+      </button>
+      <button class="desk-icon" data-dialog-title="Recycle Bin"
+              data-dialog-text="The Recycle Bin is empty. Good digital hygiene!">
+        <svg class="desk-glyph"><use href="#i-bin"/></svg>
+        <span>Recycle Bin</span>
+      </button>
+    </aside>
 
-                <a href="index.html" class="card">
-                    <div class="icon">🏠</div>
-                    <div class="card-content">
-                        <h3>This Page</h3>
-                        <p>Return to welcome</p>
-                    </div>
-                </a>
-                <a href="collections.html" class="card">
-                    <div class="icon">🖼️</div>
-                    <div class="card-content">
-                        <h3>Gallery</h3>
-                        <p>Explore photo collections</p>
-                    </div>
-                </a>
-                <a href="https://openreview.net/profile?id=%7EZiyu_Patrick_Chen1" target="_blank" class="card">
-                    <div class="icon">📚</div>
-                    <div class="card-content">
-                        <h3>Publications</h3>
-                        <p>Read my research papers</p>
-                    </div>
-                </a>
-            </div>
+    <!-- ======================= main window ======================= -->
+    <main class="window" id="main-window">
+      <header class="title-bar" id="title-bar">
+        <span class="title-bar-text">
+          <svg class="icon"><use href="#i-home"/></svg>
+          <span id="title-text">Patrick's Homepage — Microsoft Internet Explorer</span>
+        </span>
+        <span class="title-bar-controls">
+          <button class="tb-btn" id="btn-min" aria-label="Minimize">_</button>
+          <button class="tb-btn" id="btn-max" aria-label="Maximize">&#9633;</button>
+          <button class="tb-btn" id="btn-close" aria-label="Close">&times;</button>
+        </span>
+      </header>
 
-            <div class="scroll-indicator">Scroll Down</div>
+      <nav class="menu-bar" aria-label="Menu bar">
+        <button class="menu-item">File</button>
+        <button class="menu-item">Edit</button>
+        <button class="menu-item">View</button>
+        <button class="menu-item">Favorites</button>
+        <button class="menu-item">Help</button>
+      </nav>
+
+      <div class="window-body">
+
+        <!-- banner image (configured in js/config.js -> images) -->
+        <div class="bevel-in banner-frame">
+          <img class="banner" id="banner-img" src="assets/img/banner.png"
+               alt="Pixel-art banner: a retro sunset over mountains with the text 'Patrick's Homepage'">
         </div>
-    </div>
 
-    <script src="js/welcome.js"></script>
+        <!-- ======================= profile ======================= -->
+        <section class="profile" aria-label="Profile">
+          <div class="bevel-out profile-frame">
+            <img class="profile-pic" id="profile-img" src="assets/img/profile.png"
+                 alt="Pixel-art portrait of Patrick">
+          </div>
+          <div class="profile-text">
+            <h1 class="name" id="profile-name">Patrick</h1>
+            <p class="tagline" id="profile-tagline">Graduate Student &middot; Researcher &middot; Pixel Enthusiast</p>
+            <p class="bio" id="profile-bio">
+              Hi there, and welcome to my homepage! I'm Patrick — I build things,
+              read papers, and occasionally touch grass. Use the panels below to
+              reach me or find my work around the web.
+            </p>
+            <div class="bevel-in marquee-box" aria-hidden="true">
+              <span class="marquee-text" id="marquee-text">
+                &#9733; Welcome to my corner of the World Wide Web! &#9733; Best viewed at 800&times;600 &#9733; Sign my guestbook! &#9733;&nbsp;
+                &#9733; Welcome to my corner of the World Wide Web! &#9733; Best viewed at 800&times;600 &#9733; Sign my guestbook! &#9733;&nbsp;
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======== contact + links (side by side on PC, stacked on mobile) ======== -->
+        <!-- Both are rendered from js/config.js (emails / links arrays); the
+             markup here is only a no-JavaScript fallback.                  -->
+        <fieldset class="group-box">
+          <legend>Contact Me</legend>
+          <div id="email-list">
+            <div class="email-row">
+              <svg class="icon"><use href="#i-mail"/></svg>
+              <p>
+                <span class="email-label">Personal:</span><br>
+                <a href="mailto:your.email@gmail.com">your.email@gmail.com</a>
+              </p>
+            </div>
+            <div class="email-row">
+              <svg class="icon"><use href="#i-mail"/></svg>
+              <p>
+                <span class="email-label">University:</span><br>
+                <a href="mailto:your.name@university.edu">your.name@university.edu</a>
+              </p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group-box">
+          <legend>Find Me On</legend>
+          <ul class="link-list" id="link-list">
+            <li>
+              <a class="retro-btn link-btn" href="https://github.com/yourusername"
+                 target="_blank" rel="noopener">
+                <svg class="icon"><use href="#i-github"/></svg><span>GitHub</span>
+              </a>
+            </li>
+            <li>
+              <a class="retro-btn link-btn" href="https://scholar.google.com/citations?user=YOUR_USER_ID"
+                 target="_blank" rel="noopener">
+                <svg class="icon"><use href="#i-scholar"/></svg><span>Google Scholar</span>
+              </a>
+            </li>
+            <li>
+              <a class="retro-btn link-btn" href="https://discord.com/users/YOUR_USER_ID"
+                 target="_blank" rel="noopener">
+                <svg class="icon"><use href="#i-discord"/></svg><span>Discord</span>
+              </a>
+            </li>
+            <li>
+              <a class="retro-btn link-btn" href="https://openreview.net/profile?id=~Your_Name1"
+                 target="_blank" rel="noopener">
+                <svg class="icon"><use href="#i-openreview"/></svg><span>OpenReview</span>
+              </a>
+            </li>
+          </ul>
+        </fieldset>
+
+        <!-- ============================================================
+             EXPANSION:
+             - more e-mails / link buttons -> just add entries to the
+               emails / links arrays in js/config.js, no HTML needed.
+             - brand-new sections -> copy a block below, change the
+               legend and the content:
+               · plain .group-box  -> shares a row with a neighbor on PC
+               · .group-box.span-2 -> full-width row on PC
+               Everything stacks vertically on mobile automatically.
+
+        <fieldset class="group-box">
+          <legend>My Projects</legend>
+          <p>Coming soon&hellip;</p>
+        </fieldset>
+
+        <fieldset class="group-box span-2">
+          <legend>Publications</legend>
+          <p>Coming soon&hellip;</p>
+        </fieldset>
+             ============================================================ -->
+
+      </div>
+
+      <footer class="status-bar">
+        <span class="status-cell">Ready</span>
+        <span class="status-cell grow" id="status-visitor">&#9733; You are visitor #000001</span>
+        <span class="status-cell" id="status-right">HTML 4.01 compliant</span>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ======================= taskbar (PC) ======================= -->
+  <nav class="taskbar" id="taskbar" aria-label="Taskbar">
+    <button class="retro-btn start-btn" id="start-btn">
+      <svg class="icon"><use href="#i-start"/></svg><b>Start</b>
+    </button>
+    <span class="task-divider"></span>
+    <button class="task-btn" id="task-btn">
+      <svg class="icon"><use href="#i-home"/></svg><span id="task-label">Patrick's Homepage</span>
+    </button>
+    <span class="taskbar-tray bevel-in">
+      <span id="clock">--:--</span>
+    </span>
+  </nav>
+
+  <!-- start menu -->
+  <div class="start-menu bevel-out" id="start-menu" hidden>
+    <div class="start-menu-side"><span id="start-menu-name">PatrickOS</span><b id="start-menu-version">95</b></div>
+    <ul class="start-menu-items">
+      <li><button class="start-menu-item" data-action="about">
+        <svg class="icon"><use href="#i-home"/></svg>About this site</button></li>
+      <li><button class="start-menu-item" data-action="email">
+        <svg class="icon"><use href="#i-mail"/></svg>E-mail me</button></li>
+      <li class="start-sep"></li>
+      <li><button class="start-menu-item" data-action="shutdown">
+        <svg class="icon"><use href="#i-computer"/></svg>Shut Down&hellip;</button></li>
+    </ul>
+  </div>
+
+  <!-- retro dialog (reused by all pop-ups) -->
+  <div class="dialog-overlay" id="dialog-overlay" hidden>
+    <div class="window dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+      <header class="title-bar">
+        <span class="title-bar-text" id="dialog-title">Message</span>
+        <span class="title-bar-controls">
+          <button class="tb-btn" id="dialog-close" aria-label="Close">&times;</button>
+        </span>
+      </header>
+      <div class="dialog-body">
+        <p id="dialog-text"></p>
+      </div>
+      <div class="dialog-actions">
+        <button class="retro-btn" id="dialog-ok">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

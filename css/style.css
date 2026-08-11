@@ -1,0 +1,753 @@
+/* ==========================================================================
+   Patrick's Homepage — vintage Windows (95/98) style sheet
+   Inspired by https://pixel-converter.ameniwa.com
+   --------------------------------------------------------------------------
+   Sections:
+     1.  Reset & design tokens
+     2.  Base elements
+     3.  Bevel utilities & retro button
+     4.  Desktop & background
+     5.  Window chrome (title bar / menu bar / status bar)
+     6.  Content components (banner, profile, group boxes, links)
+     7.  Desktop icons
+     8.  Taskbar & Start menu
+     9.  Retro dialog
+    10.  PC (landscape) layout
+    11.  Mobile (vertical) layout
+   ========================================================================== */
+
+/* ---------- 1. Reset & design tokens ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* classic Win95 palette */
+  --win-gray: #c0c0c0;
+  --win-dark: #808080;
+  --win-darker: #0a0a0a;
+  --win-light: #dfdfdf;
+  --win-white: #ffffff;
+  --win-teal: #008080;
+  --win-navy: #000080;
+  --win-navy2: #1084d0;
+
+  --font-pixel: "DotGothic16", "VT323", monospace;
+  --font-ui: Tahoma, "MS Sans Serif", Geneva, sans-serif;
+
+  --taskbar-h: 38px;
+}
+
+/* ---------- 2. Base elements ---------- */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: #000;
+  background: var(--win-teal);
+  -webkit-font-smoothing: none;
+}
+
+img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+a {
+  color: var(--win-navy);
+  text-decoration: underline;
+}
+a:visited {
+  color: #551a8b;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--win-navy);
+  color: #fff;
+}
+
+.sprite {
+  position: absolute;
+  overflow: hidden;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+/* ---------- 3. Bevel utilities & retro button ---------- */
+.bevel-out {
+  box-shadow:
+    inset -1px -1px 0 var(--win-darker),
+    inset 1px 1px 0 var(--win-light),
+    inset -2px -2px 0 var(--win-dark),
+    inset 2px 2px 0 var(--win-white);
+}
+
+.bevel-in {
+  box-shadow:
+    inset 1px 1px 0 var(--win-darker),
+    inset -1px -1px 0 var(--win-light),
+    inset 2px 2px 0 var(--win-dark),
+    inset -2px -2px 0 var(--win-white);
+}
+
+.retro-btn {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: #000;
+  background: var(--win-gray);
+  border: none;
+  border-radius: 0;
+  padding: 4px 12px;
+  cursor: pointer;
+  box-shadow:
+    inset -1px -1px 0 var(--win-darker),
+    inset 1px 1px 0 var(--win-white),
+    inset -2px -2px 0 var(--win-dark),
+    inset 2px 2px 0 var(--win-light);
+}
+.retro-btn:active {
+  box-shadow:
+    inset 1px 1px 0 var(--win-darker),
+    inset -1px -1px 0 var(--win-white),
+    inset 2px 2px 0 var(--win-dark),
+    inset -2px -2px 0 var(--win-light);
+}
+
+/* ---------- 4. Desktop & background ---------- */
+.desktop {
+  background: var(--win-teal) url("../assets/img/background.png") repeat;
+  background-size: 32px 32px;
+}
+
+/* ---------- 5. Window chrome ---------- */
+.window {
+  background: var(--win-gray);
+  padding: 3px;
+  box-shadow:
+    inset -1px -1px 0 var(--win-darker),
+    inset 1px 1px 0 var(--win-light),
+    inset -2px -2px 0 var(--win-dark),
+    inset 2px 2px 0 var(--win-white);
+}
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 4px 3px 6px;
+  background: linear-gradient(90deg, var(--win-navy), var(--win-navy2));
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.title-bar-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title-bar-controls {
+  display: flex;
+  gap: 2px;
+  flex: none;
+}
+
+.tb-btn {
+  width: 18px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  background: var(--win-gray);
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    inset -1px -1px 0 var(--win-darker),
+    inset 1px 1px 0 var(--win-white),
+    inset -2px -2px 0 var(--win-dark),
+    inset 2px 2px 0 var(--win-light);
+}
+.tb-btn:active {
+  box-shadow:
+    inset 1px 1px 0 var(--win-darker),
+    inset -1px -1px 0 var(--win-white),
+    inset 2px 2px 0 var(--win-dark),
+    inset -2px -2px 0 var(--win-light);
+}
+
+.menu-bar {
+  display: flex;
+  gap: 2px;
+  padding: 2px 4px;
+  font-family: var(--font-pixel);
+  font-size: 13px;
+}
+
+.menu-item {
+  font: inherit;
+  background: none;
+  border: 1px solid transparent;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+.menu-item:hover {
+  border-style: solid;
+  border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+}
+.menu-item:active {
+  border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);
+}
+
+.status-bar {
+  display: flex;
+  gap: 3px;
+  padding: 3px 0 0;
+  font-family: var(--font-pixel);
+  font-size: 12px;
+}
+
+.status-cell {
+  padding: 2px 8px;
+  box-shadow:
+    inset 1px 1px 0 var(--win-dark),
+    inset -1px -1px 0 var(--win-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.status-cell.grow {
+  flex: 1;
+}
+
+/* ---------- 6. Content components ---------- */
+.window-body {
+  background: var(--win-gray);
+  padding: 10px;
+}
+
+/* keep wide content (the scrolling marquee, long links) from blowing out
+   the grid/flex tracks: allow every direct child to shrink below its
+   intrinsic min-content width */
+.window-body > * {
+  min-width: 0;
+}
+
+.banner-frame {
+  background: #000;
+  padding: 2px;
+}
+
+.banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.profile {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.profile-text {
+  min-width: 0; /* let the marquee shrink instead of forcing the row wider */
+  max-width: 100%;
+}
+
+.profile-frame {
+  flex: none;
+  background: var(--win-gray);
+  padding: 3px;
+}
+
+.profile-pic {
+  display: block;
+  width: 128px;
+  height: 128px;
+}
+
+.name {
+  font-family: var(--font-pixel);
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.tagline {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: #333;
+  margin: 2px 0 8px;
+}
+
+.bio {
+  max-width: 60ch;
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+
+.marquee-box {
+  background: #fff;
+  padding: 3px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  color: var(--win-navy);
+}
+
+.marquee-text {
+  display: inline-block;
+  animation: marquee 18s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-text { animation: none; }
+}
+
+.group-box {
+  border: 1px solid var(--win-dark);
+  box-shadow: inset 0 0 0 1px var(--win-white);
+  padding: 10px 12px 12px;
+  margin-top: 8px;
+  min-width: 0;
+}
+
+.group-box legend {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  padding: 0 6px;
+  background: var(--win-gray);
+}
+
+.email-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 2px;
+}
+.email-row + .email-row {
+  border-top: 1px dotted var(--win-dark);
+}
+.email-row p {
+  min-width: 0;
+}
+.email-row a {
+  overflow-wrap: anywhere;
+}
+
+.email-label {
+  font-family: var(--font-pixel);
+  font-weight: bold;
+}
+
+.link-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.link-btn span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.link-btn:visited {
+  color: #000;
+}
+.link-btn:hover {
+  background: #d4d4d4;
+}
+
+/* ---------- 7. Desktop icons ---------- */
+.desktop-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.desk-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 84px;
+  padding: 4px 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: #fff;
+  text-shadow: 1px 1px 0 #000;
+}
+.desk-icon span {
+  padding: 1px 3px;
+  border: 1px dotted transparent;
+}
+.desk-icon.selected span {
+  background: var(--win-navy);
+  border-color: #fff;
+}
+
+.desk-glyph {
+  width: 32px;
+  height: 32px;
+}
+
+/* ---------- 8. Taskbar & Start menu ---------- */
+.taskbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--taskbar-h);
+  padding: 4px 6px;
+  background: var(--win-gray);
+  border-top: 1px solid var(--win-light);
+  box-shadow: inset 0 1px 0 var(--win-white);
+  font-family: var(--font-pixel);
+}
+
+.start-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.task-divider {
+  width: 1px;
+  align-self: stretch;
+  margin: 2px 2px;
+  box-shadow:
+    inset 1px 0 0 var(--win-dark),
+    inset -1px 0 0 var(--win-white);
+}
+
+.task-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 200px;
+  max-width: 260px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: var(--win-gray);
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    inset 1px 1px 0 var(--win-darker),
+    inset -1px -1px 0 var(--win-white),
+    inset 2px 2px 0 var(--win-dark),
+    inset -2px -2px 0 var(--win-light);
+}
+.task-btn.minimized {
+  box-shadow:
+    inset -1px -1px 0 var(--win-darker),
+    inset 1px 1px 0 var(--win-white),
+    inset -2px -2px 0 var(--win-dark),
+    inset 2px 2px 0 var(--win-light);
+}
+
+.taskbar-tray {
+  margin-left: auto;
+  padding: 4px 12px;
+  font-size: 13px;
+  background: var(--win-gray);
+}
+
+.start-menu {
+  position: fixed;
+  left: 4px;
+  bottom: var(--taskbar-h);
+  z-index: 200;
+  display: flex;
+  background: var(--win-gray);
+  padding: 3px;
+  min-width: 220px;
+}
+
+.start-menu-side {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background: linear-gradient(180deg, var(--win-navy2), var(--win-navy));
+  color: #d4d4d4;
+  font-family: var(--font-pixel);
+  font-size: 18px;
+  padding: 8px 4px;
+  user-select: none;
+}
+.start-menu-side b {
+  color: #fff;
+}
+
+.start-menu-items {
+  list-style: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.start-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 14px;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.start-menu-item:hover {
+  background: var(--win-navy);
+  color: #fff;
+}
+
+.start-sep {
+  height: 1px;
+  margin: 4px 2px;
+  box-shadow:
+    inset 0 1px 0 var(--win-dark),
+    inset 0 -1px 0 var(--win-white);
+}
+
+/* ---------- 9. Retro dialog ---------- */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.dialog {
+  width: min(360px, 92vw);
+}
+
+.dialog-body {
+  padding: 16px 14px;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 12px;
+}
+.dialog-actions .retro-btn {
+  min-width: 88px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   10. PC (landscape) layout
+   ========================================================================== */
+html[data-layout="pc"] body {
+  overflow: hidden;
+}
+
+html[data-layout="pc"] .desktop {
+  position: fixed;
+  inset: 0 0 var(--taskbar-h) 0;
+  overflow: auto;
+}
+
+html[data-layout="pc"] .desktop-icons {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+}
+
+html[data-layout="pc"] .window#main-window {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(880px, 92vw);
+  max-height: calc(100% - 24px);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+html[data-layout="pc"] .window#main-window.maximized {
+  inset: 8px;
+  width: auto;
+  max-height: none;
+  transform: none;
+}
+
+html[data-layout="pc"] #main-window .window-body {
+  overflow: auto;
+  /* content grid: group boxes pair up two per row; everything else
+     (banner, profile, future .span-2 sections) spans full width   */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2px 12px;
+}
+html[data-layout="pc"] #main-window .window-body > * {
+  grid-column: 1 / -1;
+}
+html[data-layout="pc"] #main-window .window-body > .group-box {
+  grid-column: auto;
+}
+html[data-layout="pc"] #main-window .window-body > .group-box.span-2 {
+  grid-column: 1 / -1;
+}
+
+html[data-layout="pc"] .taskbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+html[data-layout="pc"] .title-bar {
+  cursor: grab;
+}
+html[data-layout="pc"] .title-bar:active {
+  cursor: grabbing;
+}
+
+/* Win95-ish scrollbars */
+html[data-layout="pc"] ::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+html[data-layout="pc"] ::-webkit-scrollbar-track {
+  background: var(--win-light);
+}
+html[data-layout="pc"] ::-webkit-scrollbar-thumb {
+  background: var(--win-gray);
+  box-shadow:
+    inset -1px -1px 0 var(--win-darker),
+    inset 1px 1px 0 var(--win-white),
+    inset -2px -2px 0 var(--win-dark),
+    inset 2px 2px 0 var(--win-light);
+}
+
+/* ==========================================================================
+   11. Mobile (vertical) layout
+   ========================================================================== */
+html[data-layout="mobile"] .desktop-icons,
+html[data-layout="mobile"] .taskbar,
+html[data-layout="mobile"] .start-menu {
+  display: none;
+}
+
+html[data-layout="mobile"] .desktop {
+  min-height: 100dvh;
+}
+
+html[data-layout="mobile"] .window#main-window {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+html[data-layout="mobile"] #main-window .window-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px;
+}
+
+html[data-layout="mobile"] .title-bar {
+  font-size: 13px;
+}
+
+html[data-layout="mobile"] .menu-bar {
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+html[data-layout="mobile"] .profile {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+html[data-layout="mobile"] .bio {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html[data-layout="mobile"] .link-list {
+  gap: 6px;
+}
+
+html[data-layout="mobile"] .link-btn {
+  padding: 6px 8px;
+  font-size: 13px;
+  gap: 6px;
+}
+
+html[data-layout="mobile"] .status-bar {
+  font-size: 11px;
+}
+html[data-layout="mobile"] .status-cell:last-child {
+  display: none;
+}
