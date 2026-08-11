@@ -49,7 +49,7 @@ body {
 }
 
 body {
-  font-family: var(--font-ui);
+  font-family: var(--font-ui), serif;
   font-size: 14px;
   color: #000;
   background: var(--win-teal);
@@ -57,7 +57,6 @@ body {
 }
 
 img {
-  image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
 
@@ -108,7 +107,7 @@ button:focus-visible {
 }
 
 .retro-btn {
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 14px;
   color: #000;
   background: var(--win-gray);
@@ -155,7 +154,7 @@ button:focus-visible {
   padding: 3px 4px 3px 6px;
   background: linear-gradient(90deg, var(--win-navy), var(--win-navy2));
   color: #fff;
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 14px;
   font-weight: bold;
   user-select: none;
@@ -183,7 +182,7 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-ui);
+  font-family: var(--font-ui), serif;
   font-size: 11px;
   font-weight: bold;
   line-height: 1;
@@ -209,7 +208,7 @@ button:focus-visible {
   display: flex;
   gap: 2px;
   padding: 2px 4px;
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 13px;
 }
 
@@ -232,7 +231,7 @@ button:focus-visible {
   display: flex;
   gap: 3px;
   padding: 3px 0 0;
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 12px;
 }
 
@@ -297,13 +296,13 @@ button:focus-visible {
 }
 
 .name {
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 28px;
   line-height: 1.1;
 }
 
 .tagline {
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 14px;
   color: #333;
   margin: 2px 0 8px;
@@ -342,7 +341,7 @@ button:focus-visible {
   padding: 3px 0;
   overflow: hidden;
   white-space: nowrap;
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 13px;
   color: var(--win-navy);
 }
@@ -370,7 +369,7 @@ button:focus-visible {
 }
 
 .group-box legend {
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 14px;
   padding: 0 6px;
   background: var(--win-gray);
@@ -393,7 +392,7 @@ button:focus-visible {
 }
 
 .email-label {
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-weight: bold;
 }
 
@@ -442,7 +441,7 @@ button:focus-visible {
   background: none;
   border: none;
   cursor: pointer;
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 12px;
   color: #fff;
   text-shadow: 1px 1px 0 #000;
@@ -471,7 +470,7 @@ button:focus-visible {
   background: var(--win-gray);
   border-top: 1px solid var(--win-light);
   box-shadow: inset 0 1px 0 var(--win-white);
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
 }
 
 .start-btn {
@@ -543,7 +542,7 @@ button:focus-visible {
   transform: rotate(180deg);
   background: linear-gradient(180deg, var(--win-navy2), var(--win-navy));
   color: #d4d4d4;
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 18px;
   padding: 8px 4px;
   user-select: none;
@@ -565,7 +564,7 @@ button:focus-visible {
   gap: 10px;
   width: 100%;
   padding: 8px 14px;
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 14px;
   background: none;
   border: none;
@@ -602,7 +601,7 @@ button:focus-visible {
 
 .dialog-body {
   padding: 16px 14px;
-  font-family: var(--font-pixel);
+  font-family: var(--font-pixel), serif;
   font-size: 14px;
   line-height: 1.4;
 }
