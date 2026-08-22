@@ -13,14 +13,23 @@
        refresh. The text in this file is only a no-JavaScript fallback.
        ================================================================ -->
 
-  <!-- Set the layout (pc = landscape / mobile = vertical) before first
-       paint so there is no flash of the wrong layout. -->
+  <!-- Set the layout and color theme before first paint so there is no
+       flash of the wrong layout or theme. -->
   <script>
     (function () {
       const uaMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
       const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
       const narrow = window.innerWidth < 720;
       document.documentElement.dataset.layout = (uaMobile || coarse || narrow) ? 'mobile' : 'pc';
+
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('color-theme');
+      } catch (error) {
+        // Storage may be unavailable in private or restricted browsing modes.
+      }
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
     })();
   </script>
 
@@ -166,6 +175,11 @@
         <button class="menu-item">View</button>
         <button class="menu-item">Favorites</button>
         <button class="menu-item">Help</button>
+        <button class="theme-toggle" id="theme-toggle" type="button" role="switch"
+                aria-checked="false" aria-label="Switch to dark mode">
+          <span class="theme-toggle-icon" aria-hidden="true">&#9790;</span>
+          <span id="theme-toggle-label">Dark mode</span>
+        </button>
       </nav>
 
       <div class="window-body">

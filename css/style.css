@@ -36,10 +36,39 @@
   --win-navy: #000080;
   --win-navy2: #1084d0;
 
+  --text: #000000;
+  --muted-text: #333333;
+  --link: #000080;
+  --visited-link: #551a8b;
+  --marquee-bg: #ffffff;
+  --marquee-text: #000080;
+
   --font-pixel: "DotGothic16", "VT323", monospace;
   --font-ui: Tahoma, "MS Sans Serif", Geneva, sans-serif;
 
   --taskbar-h: 38px;
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --win-gray: #30343a;
+  --win-dark: #17191c;
+  --win-darker: #070809;
+  --win-light: #555c64;
+  --win-white: #747c85;
+  --win-teal: #102c2c;
+  --win-navy: #173f68;
+  --win-navy2: #2c78ad;
+
+  --text: #f1f3f5;
+  --muted-text: #c7ccd1;
+  --link: #8ecbff;
+  --visited-link: #d4afff;
+  --marquee-bg: #171a1e;
+  --marquee-text: #9fd4ff;
+
+  color-scheme: dark;
 }
 
 /* ---------- 2. Base elements ---------- */
@@ -51,7 +80,7 @@ body {
 body {
   font-family: var(--font-ui), serif;
   font-size: 14px;
-  color: #000;
+  color: var(--text);
   background: var(--win-teal);
   -webkit-font-smoothing: none;
 }
@@ -61,15 +90,15 @@ img {
 }
 
 a {
-  color: var(--win-navy);
+  color: var(--link);
   text-decoration: underline;
 }
 a:visited {
-  color: #551a8b;
+  color: var(--visited-link);
 }
 a:focus-visible,
 button:focus-visible {
-  outline: 1px dotted #000;
+  outline: 1px dotted var(--text);
   outline-offset: 2px;
 }
 
@@ -109,7 +138,7 @@ button:focus-visible {
 .retro-btn {
   font-family: var(--font-pixel), serif;
   font-size: 14px;
-  color: #000;
+  color: var(--text);
   background: var(--win-gray);
   border: none;
   border-radius: 0;
@@ -212,6 +241,11 @@ button:focus-visible {
   font-size: 13px;
 }
 
+.menu-item,
+.theme-toggle {
+  color: var(--text);
+}
+
 .menu-item {
   font: inherit;
   background: none;
@@ -225,6 +259,38 @@ button:focus-visible {
 }
 .menu-item:active {
   border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  padding: 2px 8px;
+  font: inherit;
+  white-space: nowrap;
+  background: var(--win-gray);
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    inset -1px -1px 0 var(--win-darker),
+    inset 1px 1px 0 var(--win-white),
+    inset -2px -2px 0 var(--win-dark),
+    inset 2px 2px 0 var(--win-light);
+}
+
+.theme-toggle:active {
+  box-shadow:
+    inset 1px 1px 0 var(--win-darker),
+    inset -1px -1px 0 var(--win-white),
+    inset 2px 2px 0 var(--win-dark),
+    inset -2px -2px 0 var(--win-light);
+}
+
+.theme-toggle-icon {
+  width: 1em;
+  text-align: center;
+  font-family: var(--font-ui), serif;
 }
 
 .status-bar {
@@ -304,7 +370,7 @@ button:focus-visible {
 .tagline {
   font-family: var(--font-pixel), serif;
   font-size: 14px;
-  color: #333;
+  color: var(--muted-text);
   margin: 2px 0 8px;
 }
 
@@ -337,13 +403,13 @@ button:focus-visible {
 }
 
 .marquee-box {
-  background: #fff;
+  background: var(--marquee-bg);
   padding: 3px 0;
   overflow: hidden;
   white-space: nowrap;
   font-family: var(--font-pixel), serif;
   font-size: 13px;
-  color: var(--win-navy);
+  color: var(--marquee-text);
 }
 
 .marquee-text {
@@ -418,10 +484,10 @@ button:focus-visible {
   text-overflow: ellipsis;
 }
 .link-btn:visited {
-  color: #000;
+  color: var(--text);
 }
 .link-btn:hover {
-  background: #d4d4d4;
+  background: var(--win-light);
 }
 
 /* ---------- 7. Desktop icons ---------- */
@@ -498,6 +564,7 @@ button:focus-visible {
   padding: 4px 10px;
   font: inherit;
   font-size: 13px;
+  color: var(--text);
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
@@ -566,6 +633,7 @@ button:focus-visible {
   padding: 8px 14px;
   font-family: var(--font-pixel), serif;
   font-size: 14px;
+  color: var(--text);
   background: none;
   border: none;
   cursor: pointer;

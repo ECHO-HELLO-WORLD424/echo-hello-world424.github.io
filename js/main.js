@@ -148,6 +148,34 @@ const mainWindow = document.getElementById('main-window');
 const titleBar = document.getElementById('title-bar');
 const taskBtn = document.getElementById('task-btn');
 
+/* ------------------------------ color theme ----------------------------- */
+const themeToggle = document.getElementById('theme-toggle');
+const themeToggleIcon = themeToggle.querySelector('.theme-toggle-icon');
+const themeToggleLabel = document.getElementById('theme-toggle-label');
+
+function updateThemeToggle() {
+  const isDark = root.dataset.theme === 'dark';
+  themeToggle.setAttribute('aria-checked', String(isDark));
+  themeToggle.setAttribute(
+    'aria-label',
+    isDark ? 'Switch to light mode' : 'Switch to dark mode'
+  );
+  themeToggleIcon.textContent = isDark ? '\u2600' : '\u263e';
+  themeToggleLabel.textContent = isDark ? 'Light mode' : 'Dark mode';
+}
+
+themeToggle.addEventListener('click', () => {
+  root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  try {
+    localStorage.setItem('color-theme', root.dataset.theme);
+  } catch (error) {
+    // The theme still works for this visit when storage is unavailable.
+  }
+  updateThemeToggle();
+});
+
+updateThemeToggle();
+
 /* --------------------------- layout detection --------------------------- */
 function isMobileDevice() {
   const uaMobile =
